@@ -1,0 +1,8 @@
+<div id="header" class="header">
+  <div class="header__title" *ngIf="!isHidden">
+    <h1>SpaceX 🚀</h1>
+  </div>
+  <p-megaMenu [model]="items"></p-megaMenu>
+  <span *ngIf="isHidden" class="rocketIcon">🚀</span>
+  <span *ngIf="isHidden" class="rocketText">SpaceX</span>
+</div>
