@@ -1,41 +1,17 @@
-<p-dataView [value]="rockets">
-  <p-header>
-    <p-dataViewLayoutOptions></p-dataViewLayoutOptions>
-  </p-header>
+<div class="container">
+  <p-dataView [value]="rockets">
+    <p-header class="my-p-header">
+      <p-dataViewLayoutOptions></p-dataViewLayoutOptions>
+    </p-header>
 
-  <ng-template let-rocket pTemplate="listItem">
-    <div class="product-list-item">
-      <div class="product-list-detail">
-        <div class="product-name">{{ rocket.name }}</div>
-        <div class="product-description">
-          "{{ rocket.description }}"
-          <p>First Flight: {{ rocket.first_flight }}</p>
-        </div>
-        <p class="successRatePercentage">
-          Success Rate:
-          {{ rocket.success_rate_pct }}%
-        </p>
-        <p>
-          <a href="{{ rocket.wikipedia }}">Wikipedia</a>
-        </p>
-      </div>
-    </div>
-  </ng-template>
-
-  <ng-template let-rocket pTemplate="gridItem">
-    <div class="p-col-12 p-md-3 p-shadow-7">
-      <div class="product-grid-item card">
-        <h2>{{ rocket.name }}</h2>
-        <div class="rocketDescription">
-          "{{
-            rocket.description.length > 150
-              ? (rocket.description | slice: 0:150) + "..."
-              : rocket.description
-          }}"
-        </div>
-
-        <div class="extraInfo">
-          <p>First Flight: {{ rocket.first_flight }}</p>
+    <ng-template let-rocket pTemplate="listItem">
+      <div class="product-list-item">
+        <div class="product-list-detail">
+          <div p-header class="product-name">{{ rocket.name }}</div>
+          <div class="product-description">
+            "{{ rocket.description }}"
+            <p>First Flight: {{ rocket.first_flight }}</p>
+          </div>
           <p class="successRatePercentage">
             Success Rate:
             {{ rocket.success_rate_pct }}%
@@ -45,6 +21,32 @@
           </p>
         </div>
       </div>
-    </div>
-  </ng-template>
-</p-dataView>
+    </ng-template>
+
+    <ng-template let-rocket pTemplate="gridItem">
+      <div class="p-col-12 p-md-3 p-shadow-7">
+        <div class="product-grid-item card">
+          <h2>{{ rocket.name }}</h2>
+          <div class="rocketDescription">
+            "{{
+              rocket.description.length > 150
+                ? (rocket.description | slice: 0:150) + "..."
+                : rocket.description
+            }}"
+          </div>
+
+          <div class="extraInfo">
+            <p>First Flight: {{ rocket.first_flight }}</p>
+            <p class="successRatePercentage">
+              Success Rate:
+              {{ rocket.success_rate_pct }}%
+            </p>
+            <p>
+              <a href="{{ rocket.wikipedia }}">Wikipedia</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </p-dataView>
+</div>

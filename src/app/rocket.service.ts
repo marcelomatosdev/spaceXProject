@@ -31,7 +31,7 @@ export class RocketService {
       });
   }
 
-  getRockets(): any {
+  getRockets(): void {
     this.apollo
       .watchQuery({
         query: gql`
@@ -39,16 +39,16 @@ export class RocketService {
             rockets {
               id
               name
+              description
+              wikipedia
+              success_rate_pct
+              first_flight
             }
           }
         `,
       })
       .valueChanges.subscribe((result: any) => {
         this.rockets = result.data && result.data.rockets;
-        this.loading = result.loading;
-        this.error = result.error;
-        console.log('rocket service', this.rockets);
-        return this.rockets;
       });
   }
 }

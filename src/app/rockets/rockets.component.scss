@@ -1,20 +1,11 @@
 .container {
-  background-color: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0.75),
-    rgba(0, 0, 0, 0)
-  );
-}
-.p-dataview-header {
-  width: 10%;
-}
-.my-p-header {
-  color: red;
+  position: relative;
 }
 
-.product-list-item {
-  margin-bottom: 10px;
+.my-p-header {
+  position: sticky;
 }
+
 .companyInfo {
   display: flex;
   text-align: center;
@@ -35,6 +26,7 @@
   align-items: flex-start;
   padding: 1rem;
   width: 100%;
+  margin-bottom: 10px;
 }
 
 .product-grid-item {

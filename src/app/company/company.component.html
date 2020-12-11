@@ -1,13 +1,11 @@
-<p-organizationChart expanded="true" [value]="data" styleClass="company">
-  <ng-template let-node pTemplate="leaf">
-    <span style="font-weight: bold"
-      >{{ node.label }} <br />
-      {{ node.data.name }}</span
-    >
-  </ng-template>
-  <ng-template let-node pTemplate="default">
-    {{ node.label }}
-    <br />
-    {{ node.data.name }}
-  </ng-template>
-</p-organizationChart>
+<div class="container">
+  <p-organizationChart [value]="data" styleClass="company" *ngIf="company_info">
+    <ng-template let-node pTemplate="leaf">
+      <span style="font-weight: bold">{{ node.data.name }}</span>
+    </ng-template>
+    <ng-template let-node pTemplate="default">
+      {{ node.label }} <br />
+      {{ node.data.name }}
+    </ng-template>
+  </p-organizationChart>
+</div>

@@ -63,7 +63,7 @@ img {
   top: 0;
   height: 100vh;
   object-fit: cover;
-  z-index: 0;
+  z-index: -1;
   opacity: 50;
 }
 

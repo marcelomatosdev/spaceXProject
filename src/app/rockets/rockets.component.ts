@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Rocket } from '../rocket';
+import { RocketService } from '../rocket.service';
 
 import { Apollo } from 'apollo-angular';
 import gql from 'graphql-tag';
@@ -7,14 +8,15 @@ import gql from 'graphql-tag';
 @Component({
   selector: 'app-rockets',
   templateUrl: './rockets.component.html',
-  styleUrls: ['./rockets.component.css'],
+  styleUrls: ['./rockets.component.scss'],
 })
 export class RocketsComponent implements OnInit {
   rockets: Rocket[] = [];
-  constructor(private apollo: Apollo) {}
+  constructor(private apollo: Apollo, private rocketService: RocketService) {}
 
   ngOnInit(): void {
     this.getRockets();
+    // this.rocketService.getRockets();
   }
 
   getRockets(): void {

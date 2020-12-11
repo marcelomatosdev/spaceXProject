@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { MenuItem } from 'primeng/api';
-import { MegaMenuItem } from 'primeng/api';
+import { Component, HostListener, OnInit } from '@angular/core';
+import { Header } from 'primeng/api';
 
 @Component({
   selector: 'app-header',
@@ -8,30 +7,18 @@ import { MegaMenuItem } from 'primeng/api';
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent implements OnInit {
-  items: MegaMenuItem[];
-  isHidden: boolean = false;
-  scrolledY: number = 0;
+  showElement: boolean = true;
+
   constructor() {}
 
-  ngOnInit(): void {
-    window.addEventListener('scroll', this.scroll, true);
-    this.getMenuItems();
-  }
+  ngOnInit(): void {}
 
-  scroll = (event): void => {
-    if (window.pageYOffset != 0) {
-      this.isHidden = true;
+  @HostListener('window:scroll', ['$event'])
+  onScroll(event) {
+    if (document.body.getBoundingClientRect().top === 0) {
+      this.showElement = true;
     } else {
-      this.isHidden = false;
+      this.showElement = false;
     }
-  };
-
-  getMenuItems(): void {
-    this.items = [
-      { label: 'Home', routerLink: '/' },
-      { label: 'Rockets', routerLink: '/rockets' },
-      { label: 'Missions', routerLink: '/missions' },
-      { label: 'The SpaceX', routerLink: '/company' },
-    ];
   }
 }

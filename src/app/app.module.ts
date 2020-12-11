@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { GraphQLModule } from './graphql.module';
 import { AppRoutingModule } from './app-routing.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -22,25 +23,25 @@ import { MegaMenuModule } from 'primeng/megamenu';
 import { BreadcrumbModule } from 'primeng/breadcrumb';
 import { OrganizationChartModule } from 'primeng/organizationchart';
 import { MenubarModule } from 'primeng/menubar';
+import { MenuBarComponent } from './menu-bar/menu-bar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-
     DashboardComponent,
-
     HeaderComponent,
     RocketsComponent,
     MissionsComponent,
     CompanyComponent,
+    MenuBarComponent,
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
     GraphQLModule,
-
     InputTextModule,
     DataViewModule,
     DropdownModule,
@@ -49,6 +50,7 @@ import { MenubarModule } from 'primeng/menubar';
     MegaMenuModule,
     BreadcrumbModule,
     OrganizationChartModule,
+    MenubarModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
