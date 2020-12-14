@@ -1,12 +1,19 @@
 <div class="container">
-  <p-dataView [value]="rockets">
-    <p-header class="my-p-header">
-      <p-dataViewLayoutOptions></p-dataViewLayoutOptions>
-    </p-header>
+  <div class="viewMenuContainer">
+    <p-dataView [value]="rockets">
+      <p-header class="my-p-header">
+        <p-dataViewLayoutOptions
+          (click)="handleClick($event)"
+        ></p-dataViewLayoutOptions>
+      </p-header>
+    </p-dataView>
+  </div>
 
+  <p-dataView [value]="rockets">
     <ng-template let-rocket pTemplate="listItem">
-      <div class="product-list-item">
+      <div class="product-list-item" *ngIf="showList">
         <div class="product-list-detail">
+          <!-- <div p-header class="product-name">{{ rocket.name }}</div> -->
           <div p-header class="product-name">{{ rocket.name }}</div>
           <div class="product-description">
             "{{ rocket.description }}"
@@ -21,10 +28,8 @@
           </p>
         </div>
       </div>
-    </ng-template>
 
-    <ng-template let-rocket pTemplate="gridItem">
-      <div class="p-col-12 p-md-3 p-shadow-7">
+      <div class="p-col-12 p-md-3 p-shadow-7" *ngIf="!showList">
         <div class="product-grid-item card">
           <h2>{{ rocket.name }}</h2>
           <div class="rocketDescription">

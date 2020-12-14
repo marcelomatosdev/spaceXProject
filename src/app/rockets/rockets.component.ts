@@ -4,6 +4,7 @@ import { RocketService } from '../rocket.service';
 
 import { Apollo } from 'apollo-angular';
 import gql from 'graphql-tag';
+import { HostListener } from '@angular/core';
 
 @Component({
   selector: 'app-rockets',
@@ -12,13 +13,18 @@ import gql from 'graphql-tag';
 })
 export class RocketsComponent implements OnInit {
   rockets: Rocket[] = [];
-  constructor(private apollo: Apollo, private rocketService: RocketService) {}
+  showList: boolean = true;
+
+  constructor(private apollo: Apollo, public rocketService: RocketService) {}
 
   ngOnInit(): void {
     this.getRockets();
     // this.rocketService.getRockets();
   }
-
+  handleClick(event) {
+    console.log('clicked', event);
+    this.showList = !this.showList;
+  }
   getRockets(): void {
     this.apollo
       .watchQuery({

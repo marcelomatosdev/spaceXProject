@@ -17,14 +17,15 @@ export class CompanyComponent implements OnInit {
 
   ngOnInit() {
     this.getCompanyInfo();
-    this.getTree();
+    // this.getTree();
   }
 
   getTree(): void {
     this.data = [
       {
         label: 'CEO',
-        data: { name: 'Elon Musk' },
+        // data: { name: 'Elon Musk' },
+        data: { name: this.company_info.ceo },
         expanded: true,
         children: [
           {
@@ -34,12 +35,14 @@ export class CompanyComponent implements OnInit {
             children: [
               {
                 label: 'CTO',
-                data: { name: 'Elon Musk' },
+                // data: { name: 'Elon Musk' },
+                data: { name: this.company_info.cto },
                 expanded: true,
               },
               {
                 label: 'CTO Propulsion',
-                data: { name: 'Tom Mueller' },
+                // data: { name: 'Tom Mueller' },
+                data: { name: this.company_info.cto_propulsion },
                 expanded: true,
               },
             ],
@@ -51,8 +54,8 @@ export class CompanyComponent implements OnInit {
             children: [
               {
                 label: 'COO',
-                data: { name: 'Gwynne Shotwell' },
-                // data: { name: this.company_info.cto },
+                // data: { name: 'Gwynne Shotwell' },
+                data: { name: this.company_info.coo },
                 expanded: true,
               },
             ],
@@ -83,6 +86,7 @@ export class CompanyComponent implements OnInit {
       })
       .valueChanges.subscribe((result: any) => {
         this.company_info = result.data.company;
+        this.getTree();
       });
   }
 }

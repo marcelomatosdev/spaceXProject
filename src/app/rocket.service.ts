@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Apollo } from 'apollo-angular';
 import gql from 'graphql-tag';
+import { Rocket } from './rocket';
 
 @Injectable({
   providedIn: 'root',
 })
 export class RocketService {
-  rockets: any[];
+  rockets: Rocket[];
   rocket: any;
   loading = true;
   error: any;

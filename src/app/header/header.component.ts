@@ -9,16 +9,28 @@ import { Header } from 'primeng/api';
 export class HeaderComponent implements OnInit {
   showElement: boolean = true;
 
+  initialTopPosition: number;
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.initialTopPosition = document.body.getBoundingClientRect().top * 10;
+  }
 
   @HostListener('window:scroll', ['$event'])
   onScroll(event) {
-    if (document.body.getBoundingClientRect().top === 0) {
-      this.showElement = true;
-    } else {
+    console.log(
+      '>>>',
+      document.body.getBoundingClientRect().top -
+        (document.body.getBoundingClientRect().top % 2)
+    );
+    console.log('initialPosition>>> ', this.initialTopPosition);
+    if (
+      document.body.getBoundingClientRect().top * 10 !=
+      this.initialTopPosition
+    ) {
       this.showElement = false;
+    } else {
+      this.showElement = true;
     }
   }
 }
